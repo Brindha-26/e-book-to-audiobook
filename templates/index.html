@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Audio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Upload  PDF to convert into Audio</h1>
+        <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+            <label for="pdf">SELECT A PDF FILE</label>
+            <input type="file" name="pdf" accept="application/pdf" required><br><br>
+            
+            <label for="language">SELECT LANGUAGE</label>
+            <select name="language" id="language" required>
+                {% for code, name in languages.items() %}
+                    <option value="{{ code }}">{{ name }}</option>
+                {% endfor %}
+            </select><br><br>
+          
+            <!-- Use a button for better styling control -->
+            <button type="submit">Upload and Convert</button>
+        </form>
+    </div>
+</body>
+</html>
